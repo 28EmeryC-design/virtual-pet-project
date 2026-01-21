@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Virtual Pet</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>🐾 Virtual Pet Simulator</h1>
+
+  <!-- Pet Setup -->
+  <section id="setup">
+    <h2>Create Your Pet</h2>
+    <input type="text" id="petNameInput" placeholder="Pet Name">
+    
+    <select id="petTypeSelect">
+      <option value="Bunny">Bunny</option>
+      <option value="Lizard">Lizard</option>
+      <option value="Dragon">Dragon</option>
+      <option value="Dolphin">Dolphin</option>
+      <option value="Unicorn">Unicorn</option>
+      <option value="Naked Mole Rat">Naked Mole Rat</option>
+    </select>
+
+    <button onclick="createPet()">Create Pet</button>
+  </section>
+
+  <!-- Pet Display -->
+  <section id="petArea" class="hidden">
+    <h2 id="petName"></h2>
+    <p id="petMood">Mood: 🙂</p>
+
+    <!-- Stats -->
+    <div id="stats">
+      <p>Hunger: <span id="hunger"></span></p>
+      <p>Happiness: <span id="happiness"></span></p>
+      <p>Energy: <span id="energy"></span></p>
+      <p>Health: <span id="health"></span></p>
+      <p>Money: $<span id="money"></span></p>
+      <p>Total Spent: $<span id="spent"></span></p>
+    </div>
+
+    <!-- Actions -->
+    <div id="actions">
+      <button onclick="feedPet()">Feed</button>
+      <button onclick="playPet()">Play</button>
+      <button onclick="restPet()">Rest</button>
+      <button onclick="cleanPet()">Clean</button>
+      <button onclick="vetVisit()">Vet</button>
+      <button onclick="earnMoney()">Earn Money</button>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

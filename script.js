@@ -91,7 +91,7 @@ function updateMood() {
     mood.textContent = "Mood: 😢 Sad";
   } else if (pet.energy > 70) {
     mood.textContent = "Mood: 😄 Energetic";
-  } else {
+    } else if (pet.happiness > 70) {
     mood.textContent = "Mood: 🙂 Happy";
   }
 }

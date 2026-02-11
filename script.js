@@ -14,6 +14,7 @@ function createPet() {
     happiness: 50,
     energy: 50,
     health: 50,
+    hygine: 50,
     money: 100
   };
 

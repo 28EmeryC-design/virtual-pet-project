@@ -14,14 +14,13 @@ function createPet() {
     happiness: 50,
     energy: 50,
     health: 50,
-    hygine: 50,
-    money: 100
+    hygiene: 50,
   };
 
   document.getElementById("setup").classList.add("hidden");
   document.getElementById("petArea").classList.remove("hidden");
 
-  document.getElementById("petName").textContent = pet.name + " the " + pet.type;
+  document.getElementById("petName").textContent = pet.name + " The " + pet.type;
 
   updateDisplay();
 }
@@ -32,7 +31,7 @@ function updateDisplay() {
   document.getElementById("happiness").textContent = pet.happiness;
   document.getElementById("energy").textContent = pet.energy;
   document.getElementById("health").textContent = pet.health;
-  document.getElementById("money").textContent = pet.money;
+  document.getElementById("hygiene").textContent = pet.hygiene;
   document.getElementById("spent").textContent = totalSpent;
 
   updateMood();
@@ -64,6 +63,7 @@ function cleanPet() {
     pet.health += 5;
     pet.money -= 3;
     totalSpent += 3;
+    pet.hygiene += 5;
   }
   updateDisplay();
 }
@@ -96,3 +96,16 @@ function updateMood() {
     mood.textContent = "Mood: 🙂 Happy";
   }
 }
+
+let triviaQuestions = [
+  {
+    question: "What planet is known as the Red Planet?",
+    answers: ["Earth", "Mars", "Jupiter"],
+    correct: 1
+  },
+  {
+    question: "How many legs does a spider have?",
+    answers: ["6", "8", "10"],
+    correct: 1
+  }
+];

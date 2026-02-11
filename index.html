@@ -7,7 +7,7 @@
 </head>
 <body>
 
-  <h1>🐾 Virtual Pet Simulator</h1>
+  <h1> Virtual Pet Simulator</h1>
 
   <!-- Pet Setup -->
   <section id="setup">
@@ -37,8 +37,7 @@
       <p>Happiness: <span id="happiness"></span></p>
       <p>Energy: <span id="energy"></span></p>
       <p>Health: <span id="health"></span></p>
-      <p>Hygine: <span id="hygine"></span></p>
-      <p>Money: $<span id="money"></span></p>
+      <p>Hygiene: <span id="hygiene"></span></p>
       <p>Total Spent: $<span id="spent"></span></p>
     </div>
 
@@ -49,10 +48,15 @@
       <button onclick="restPet()">Rest</button>
       <button onclick="cleanPet()">Clean</button>
       <button onclick="vetVisit()">Vet</button>
-      <button onclick="earnMoney()">Earn Money</button>
     </div>
   </section>
 
   <script src="script.js"></script>
 </body>
 </html>
+
+<button onclick="startTrivia()">Earn Money 💰</button>
+
+<div id="triviaBox"></div>
+
+<p id="moneyText">Money: $0</p>

@@ -15,11 +15,11 @@ function createPet() {
     energy: 50,
     health: 50,
     hygiene: 50,
+    money: 0   //
   };
 
   document.getElementById("setup").classList.add("hidden");
   document.getElementById("petArea").classList.remove("hidden");
-
   document.getElementById("petName").textContent = pet.name + " The " + pet.type;
 
   updateDisplay();
@@ -32,6 +32,7 @@ function updateDisplay() {
   document.getElementById("energy").textContent = pet.energy;
   document.getElementById("health").textContent = pet.health;
   document.getElementById("hygiene").textContent = pet.hygiene;
+  document.getElementById("money").textContent = pet.money;
   document.getElementById("spent").textContent = totalSpent;
 
   updateMood();
@@ -75,12 +76,13 @@ function vetVisit() {
     totalSpent += 20;
   }
   updateDisplay();
+  document.getElementById("money").textContent = pet.money;
 }
 
 function earnMoney() {
-  pet.money += 10;
-  updateDisplay();
+  startTrivia();
 }
+
 
 // Mood logic
 function updateMood() {
@@ -99,13 +101,56 @@ function updateMood() {
 
 let triviaQuestions = [
   {
-    question: "What planet is known as the Red Planet?",
-    answers: ["Earth", "Mars", "Jupiter"],
+    question: "Do pets need exercise?",
+    answers: ["Yes", "No", "somtimes"],
+    correct: 0
+  },
+   {
+    question: "How can pets get exercise?",
+    answers: ["Watch TV ", "Go for a walk", "Sleep All Day"],
     correct: 1
   },
+     {
+    question: "what can cats eat?",
+    answers: ["Raw Potatos", "Onions", "Fish"],
+    correct: 2
+  },
   {
-    question: "How many legs does a spider have?",
-    answers: ["6", "8", "10"],
-    correct: 1
+    question: "What can you not feed your dog?",
+    answers: ["Chocolate", "Dog Food", "Meat"],
+    correct: 0
   }
 ];
+function startTrivia() {
+  let randomIndex = Math.floor(Math.random() * triviaQuestions.length);
+  let questionData = triviaQuestions[randomIndex];
+
+  let triviaBox = document.getElementById("triviaBox");
+
+  triviaBox.innerHTML = `
+    <p>${questionData.question}</p>
+    <button onclick="checkAnswer(${randomIndex}, 0)">
+      ${questionData.answers[0]}
+    </button>
+    <button onclick="checkAnswer(${randomIndex}, 1)">
+      ${questionData.answers[1]}
+    </button>
+    <button onclick="checkAnswer(${randomIndex}, 2)">
+      ${questionData.answers[2]}
+    </button>
+  `;
+}
+function checkAnswer(questionIndex, answerIndex) {
+  let questionData = triviaQuestions[questionIndex];
+
+  if (answerIndex === questionData.correct) {
+    pet.money += 10;
+    alert("Correct! You earned $10 💰");
+  } else {
+    alert("Wrong answer 😢");
+  }
+
+  updateDisplay();
+
+  document.getElementById("triviaBox").innerHTML = "";
+}

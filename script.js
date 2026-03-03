@@ -44,6 +44,8 @@ function feedPet() {
     pet.hunger -= 10;
     pet.money -= 5;
     totalSpent += 5;
+     } else {
+    showPopup("Not enough money! 💸");
   }
   updateDisplay();
 }
@@ -56,15 +58,18 @@ function playPet() {
 
 function restPet() {
   pet.energy += 15;
+  pet.hunger -=2;
   updateDisplay();
 }
 
 function cleanPet() {
-  if (pet.money >= 3) {
+  if (pet.money >= 5) {
     pet.health += 5;
-    pet.money -= 3;
-    totalSpent += 3;
+    pet.money -= 5;
+    totalSpent += 5;
     pet.hygiene += 5;
+      } else {
+    showPopup("Not enough money! 💸");
   }
   updateDisplay();
 }
@@ -74,6 +79,8 @@ function vetVisit() {
     pet.health += 20;
     pet.money -= 20;
     totalSpent += 20;
+      } else {
+    showPopup("Not enough money! 💸");
   }
   updateDisplay();
   document.getElementById("money").textContent = pet.money;
@@ -102,7 +109,7 @@ function updateMood() {
 let triviaQuestions = [
   {
     question: "Do pets need exercise?",
-    answers: ["Yes", "No", "somtimes"],
+    answers: ["Yes", "No", "Somtimes"],
     correct: 0
   },
    {
@@ -111,9 +118,24 @@ let triviaQuestions = [
     correct: 1
   },
      {
-    question: "what can cats eat?",
+    question: "What can cats eat?",
     answers: ["Raw Potatos", "Onions", "Fish"],
     correct: 2
+  },
+    {
+    question: "Where do you take your pet when it is sick?",
+    answers: ["Doctor", "Vet", "Amusement Park"],
+    correct: 1
+  },
+    {
+    question: "How long do dogs need to sleep per day?",
+    answers: ["12-16 hrs", "10 hrs", "12-14 hrs"],
+    correct: 2
+  },
+   {
+    question: "How long do cats need to sleep per day?",
+    answers: ["12-16 hrs", "10 hrs", "12-14 hrs"],
+    correct: 0
   },
   {
     question: "What can you not feed your dog?",
@@ -147,10 +169,21 @@ function checkAnswer(questionIndex, answerIndex) {
     pet.money += 10;
     alert("Correct! You earned $10 💰");
   } else {
+    pet.health -= 10;
     alert("Wrong answer 😢");
   }
 
   updateDisplay();
 
   document.getElementById("triviaBox").innerHTML = "";
+}
+
+function showPopup(message) {
+  const popup = document.getElementById("popup");
+  popup.textContent = message;
+  popup.classList.remove("hidden");
+
+  setTimeout(() => {
+    popup.classList.add("hidden");
+  }, 2000);
 }

@@ -187,3 +187,13 @@ function showPopup(message) {
     popup.classList.add("hidden");
   }, 2000);
 }
+
+let petImage = document.getElementById("petImage");
+
+if (pet.type === "Dog") {
+  petImage.src = "dog.png";
+} else if (pet.type === "Cat") {
+  petImage.src = "cat.png";
+} else if (pet.type === "Lizard") {
+  petImage.src = "Lizard.png";
+}

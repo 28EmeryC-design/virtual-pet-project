@@ -44,3 +44,8 @@ button {
 
   z-index: 1000;
 }
+
+#triviaBox {
+  color: rgb(221, 217, 217);
+}
+

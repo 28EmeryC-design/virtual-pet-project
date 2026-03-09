@@ -7,6 +7,7 @@ function createPet() {
   const name = document.getElementById("petNameInput").value;
   const type = document.getElementById("petTypeSelect").value;
 
+  // 1️⃣ Set up the pet object
   pet = {
     name: name,
     type: type,
@@ -15,13 +16,30 @@ function createPet() {
     energy: 50,
     health: 50,
     hygiene: 50,
-    money: 0   //
+    money: 0
   };
 
+  // 2️⃣ Set the pet image based on type
+  let petImage = document.getElementById("petImage");
+
+  if (pet.type === "Dog") {
+    petImage.src = "images/dog.png";
+  } else if (pet.type === "Cat") {
+    petImage.src = "images/cat.png";
+  } else if (pet.type === "Dragon") {
+    petImage.src = "images/dragon.png";
+  } else if (pet.type === "Lizard") {
+    petImage.src = "images/lizard.png";
+  }
+
+  // 3️⃣ Hide setup, show pet area
   document.getElementById("setup").classList.add("hidden");
   document.getElementById("petArea").classList.remove("hidden");
+
+  // 4️⃣ Update pet name on screen
   document.getElementById("petName").textContent = pet.name + " The " + pet.type;
 
+  // 5️⃣ Update stats and mood
   updateDisplay();
 }
 
@@ -109,7 +127,7 @@ function updateMood() {
 let triviaQuestions = [
   {
     question: "Do pets need exercise?",
-    answers: ["Yes", "No", "Somtimes"],
+    answers: ["Yes", "No", "Sometimes"],
     correct: 0
   },
    {
@@ -136,6 +154,51 @@ let triviaQuestions = [
     question: "How long do cats need to sleep per day?",
     answers: ["12-16 hrs", "10 hrs", "12-14 hrs"],
     correct: 0
+  },
+   {
+    question: "What is the one place lizards are not found?",
+    answers: ["Antarctica", "Alaska", "Australia"],
+    correct: 0
+  },
+   {
+    question: "What is a group of lizards called?",
+    answers: ["tounge", "lounge", "lodge"],
+    correct: 1
+  },
+  {
+    question: "What is a group of dogs called?",
+    answers: ["group", "flamboyance", "kennel"],
+    correct: 2
+  },
+  {
+    question: "What is a group of cats called?",
+    answers: ["pack", "clowder", "lodge"],
+    correct: 1
+  },
+  {
+    question: "What is a group of bunny called?",
+    answers: ["fluffle", "raft", "leap"],
+    correct: 0
+  },
+  {
+    question: "What is a group of horse called?",
+    answers: ["shiver", "school", "stud"],
+    correct: 2
+  },
+  {
+    question: "What is a group of parrots called?",
+    answers: ["lodge", "flock", "speak"],
+    correct: 1
+  },
+  {
+    question: "How many species of parrots are there approximately?",
+    answers: ["300", "350", "400"],
+    correct: 2
+  },
+  {
+    question: "What is a group of lizards called?",
+    answers: ["tounge", "lounge", "flamboyance"],
+    correct: 1
   },
   {
     question: "What can you not feed your dog?",
@@ -188,12 +251,3 @@ function showPopup(message) {
   }, 2000);
 }
 
-let petImage = document.getElementById("petImage");
-
-if (pet.type === "Dog") {
-  petImage.src = "dog.png";
-} else if (pet.type === "Cat") {
-  petImage.src = "cat.png";
-} else if (pet.type === "Lizard") {
-  petImage.src = "Lizard.png";
-}

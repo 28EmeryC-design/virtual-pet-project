@@ -49,3 +49,13 @@ button {
   color: rgb(221, 217, 217);
 }
 
+#petLayout {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+#petContainer img {
+  width: 150px;
+  height: auto;
+}

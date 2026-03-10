@@ -23,11 +23,15 @@ function createPet() {
   let petImage = document.getElementById("petImage");
 
   if (pet.type === "Dog") {
-    petImage.src = "images/dog.png";
+    petImage.src = "images/Dog.png";
   } else if (pet.type === "Cat") {
-    petImage.src = "images/cat.png";
-  } else if (pet.type === "Dragon") {
-    petImage.src = "images/dragon.png";
+    petImage.src = "images/Cat.png";
+  } else if (pet.type === "Horse") {
+    petImage.src = "images/Horse.png";
+  } else if (pet.type === "Bunny") {
+    petImage.src = "images/Bunny.png";
+     } else if (pet.type === "Parrot") {
+    petImage.src = "images/Parrot.png";
   } else if (pet.type === "Lizard") {
     petImage.src = "images/lizard.png";
   }
@@ -199,6 +203,16 @@ let triviaQuestions = [
     question: "What is a group of lizards called?",
     answers: ["tounge", "lounge", "flamboyance"],
     correct: 1
+  },
+   {
+    question: "How many teeth do female horses have?",
+    answers: ["36", "40", "55"],
+    correct: 0
+  },
+   {
+    question: "How fast can a rabbit run(Miles Per Hour)?",
+    answers: ["55", "40", "35"],
+    correct: 0
   },
   {
     question: "What can you not feed your dog?",

@@ -59,3 +59,32 @@ button {
   width: 150px;
   height: auto;
 }
+
+#expenseBox {
+  border: 2px solid black;
+  padding: 15px;
+  border-radius: 10px;
+  width: 200px;
+  background-color: white;
+}
+
+#expenseBox h3 {
+  text-align: center;
+}
+#petLayout {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+#expenseBox {
+  width: 200px;
+  background: #1e1e1e;
+  border: 2px solid white;
+  padding: 10px;
+  margin-right: 30px;
+}
+
+#stats {
+  width: 250px;
+}

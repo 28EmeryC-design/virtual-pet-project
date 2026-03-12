@@ -23,17 +23,17 @@ function createPet() {
   let petImage = document.getElementById("petImage");
 
   if (pet.type === "Dog") {
-    petImage.src = "images/Dog.png";
+    petImage.src = "images/C Dog.png";
   } else if (pet.type === "Cat") {
-    petImage.src = "images/Cat.png";
+    petImage.src = "images/C Cat.png";
   } else if (pet.type === "Horse") {
-    petImage.src = "images/Horse.png";
+    petImage.src = "images/C Horse.png";
   } else if (pet.type === "Bunny") {
-    petImage.src = "images/Bunny.png";
+    petImage.src = "images/C Bunny.png";
      } else if (pet.type === "Parrot") {
-    petImage.src = "images/Parrot.png";
+    petImage.src = "images/C Parrot.png";
   } else if (pet.type === "Lizard") {
-    petImage.src = "images/lizard.png";
+    petImage.src = "images/C Lizzard.png";
   }
 
   // 3️⃣ Hide setup, show pet area

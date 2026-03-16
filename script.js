@@ -1,13 +1,9 @@
-// Pet object
 let pet = {};
-let totalSpent = 0;
 
-// Create pet
 function createPet() {
   const name = document.getElementById("petNameInput").value;
   const type = document.getElementById("petTypeSelect").value;
 
-  // 1️⃣ Set up the pet object
   pet = {
     name: name,
     type: type,
@@ -16,116 +12,108 @@ function createPet() {
     energy: 50,
     health: 50,
     hygiene: 50,
-    money: 0
+    money: 50, // Starting money
+    spentFood: 0,
+    spentVet: 0,
+    spentToys: 0,
+    spentSupplies: 0
   };
 
-  // 2️⃣ Set the pet image based on type
-  let petImage = document.getElementById("petImage");
-
-  if (pet.type === "Dog") {
-    petImage.src = "images/C Dog.png";
-  } else if (pet.type === "Cat") {
-    petImage.src = "images/C Cat.png";
-  } else if (pet.type === "Horse") {
-    petImage.src = "images/C Horse.png";
-  } else if (pet.type === "Bunny") {
-    petImage.src = "images/C Bunny.png";
-     } else if (pet.type === "Parrot") {
-    petImage.src = "images/C Parrot.png";
-  } else if (pet.type === "Lizard") {
-    petImage.src = "images/C Lizzard.png";
-  }
-
-  // 3️⃣ Hide setup, show pet area
+  document.getElementById("petImage").src = `images/C ${pet.type}.png`;
   document.getElementById("setup").classList.add("hidden");
   document.getElementById("petArea").classList.remove("hidden");
-
-  // 4️⃣ Update pet name on screen
   document.getElementById("petName").textContent = pet.name + " The " + pet.type;
 
-  // 5️⃣ Update stats and mood
   updateDisplay();
 }
 
-// Update stats on screen
 function updateDisplay() {
+  // 1. Math
+  const total = pet.spentFood + pet.spentVet + pet.spentToys + pet.spentSupplies;
+
+  // 2. Update Stats Area
   document.getElementById("hunger").textContent = pet.hunger;
   document.getElementById("happiness").textContent = pet.happiness;
   document.getElementById("energy").textContent = pet.energy;
   document.getElementById("health").textContent = pet.health;
   document.getElementById("hygiene").textContent = pet.hygiene;
+  
+  // Update the first set of Money/Spent
   document.getElementById("money").textContent = pet.money;
-  document.getElementById("spent").textContent = totalSpent;
+  document.getElementById("spent").textContent = total;
+
+  // 3. Update Expense Box (using the NEW unique IDs)
+  document.getElementById("foodCost").textContent = pet.spentFood + pet.spentSupplies;
+  document.getElementById("vetCost").textContent = pet.spentVet;
+  document.getElementById("toyCost").textContent = pet.spentToys;
+  document.getElementById("totalSpentDisplay").textContent = total;
+  document.getElementById("budgetDisplay").textContent = pet.money;
 
   updateMood();
 }
 
-// Pet actions
+// Action with Money Protection
 function feedPet() {
+  // Check if they have at least $5
   if (pet.money >= 5) {
-    pet.hunger -= 10;
+    pet.hunger = Math.max(0, pet.hunger - 10);
     pet.money -= 5;
-    totalSpent += 5;
-     } else {
+    pet.spentFood += 5;
+    updateDisplay();
+  } else {
+    // This runs ONLY if they have less than $5
     showPopup("Not enough money! 💸");
   }
-  updateDisplay();
 }
 
 function playPet() {
-  pet.happiness += 10;
-  pet.energy -= 10;
-  updateDisplay();
-}
-
-function restPet() {
-  pet.energy += 15;
-  pet.hunger -=2;
-  updateDisplay();
+  if (pet.money >= 3) {
+    pet.happiness = Math.min(100, pet.happiness + 10);
+    pet.energy = Math.max(0, pet.energy - 10);
+    pet.money -= 3;
+    pet.spentToys += 3;
+    updateDisplay();
+  } else {
+    showPopup("Not enough money! 💸");
+  }
 }
 
 function cleanPet() {
-  if (pet.money >= 5) {
-    pet.health += 5;
-    pet.money -= 5;
-    totalSpent += 5;
-    pet.hygiene += 5;
-      } else {
+  if (pet.money >= 2) {
+    pet.hygiene = Math.min(100, pet.hygiene + 15);
+    pet.money -= 2;
+    pet.spentSupplies += 2;
+    updateDisplay();
+  } else {
     showPopup("Not enough money! 💸");
   }
-  updateDisplay();
 }
 
 function vetVisit() {
   if (pet.money >= 20) {
-    pet.health += 20;
+    pet.health = Math.min(100, pet.health + 20);
     pet.money -= 20;
-    totalSpent += 20;
-      } else {
+    pet.spentVet += 20;
+    updateDisplay();
+  } else {
     showPopup("Not enough money! 💸");
   }
-  updateDisplay();
-  document.getElementById("money").textContent = pet.money;
 }
 
-function earnMoney() {
-  startTrivia();
+function showPopup(message) {
+  const popup = document.getElementById("popup");
+  popup.textContent = message;
+  popup.classList.remove("hidden");
+  setTimeout(() => { popup.classList.add("hidden"); }, 2000);
 }
 
-
-// Mood logic
+// 5. Mood & Trivia Logic
 function updateMood() {
   const mood = document.getElementById("petMood");
-
-  if (pet.health < 30) {
-    mood.textContent = "Mood: 🤒 Sick";
-  } else if (pet.happiness < 30) {
-    mood.textContent = "Mood: 😢 Sad";
-  } else if (pet.energy > 70) {
-    mood.textContent = "Mood: 😄 Energetic";
-    } else if (pet.happiness > 70) {
-    mood.textContent = "Mood: 🙂 Happy";
-  }
+  if (pet.health < 30) mood.textContent = "Mood: 🤒 Sick";
+  else if (pet.happiness < 30) mood.textContent = "Mood: 😢 Sad";
+  else if (pet.energy > 70) mood.textContent = "Mood: 😄 Energetic";
+  else mood.textContent = "Mood: 🙂 Happy";
 }
 
 let triviaQuestions = [

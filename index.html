@@ -38,7 +38,7 @@
       <p>Energy: <span id="energy"></span></p>
       <p>Health: <span id="health"></span></p>
       <p>Hygiene: <span id="hygiene"></span></p>
-      <p>Money: $<span id="money">0</span></p>
+      <p>Money: $<span id="money"></span></p>
       <p>Total Spent: $<span id="spent"></span></p>
       <button onclick="startTrivia()">Earn Money 💰</button>
       <div id="petContainer">
@@ -62,6 +62,14 @@
 
 
 <div id="triviaBox"></div>
-
 <div id="popup" class="hidden"></div>
 
+<div id="expenseBox">
+  <h3>Cost of Care</h3>
+  <p>Food & Supplies: $<span id="foodCost">0</span></p>
+  <p>Vet Visits: $<span id="vetCost">0</span></p>
+  <p>Toys & Activities: $<span id="toyCost">0</span></p>
+  <hr>
+  <p><strong>Total Spent:</strong> $<span id="totalSpentDisplay">0</span></p>
+  <p><strong>Budget Left:</strong> $<span id="budgetDisplay">0</span></p>
+</div>

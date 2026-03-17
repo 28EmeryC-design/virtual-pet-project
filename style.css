@@ -88,3 +88,29 @@ button {
 #stats {
   width: 250px;
 }
+
+#instructionBox {
+  background-color: #f9f9f9;
+  border: 2px solid #a2d2ff;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 20px auto;
+  max-width: 500px;
+  text-align: left; /* Makes the list easier to read */
+}
+
+#instructionBox h3 {
+  margin-top: 0;
+  color: #0077b6;
+  text-align: center;
+}
+
+#instructionBox ul {
+  padding-left: 20px;
+  list-size-type: none;
+}
+
+#instructionBox li {
+  margin-bottom: 8px;
+  font-size: 0.95em;
+}

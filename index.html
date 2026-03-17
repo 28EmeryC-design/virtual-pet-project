@@ -7,7 +7,7 @@
 </head>
 <body>
 
-  <h1> Virtual Pet Simulator</h1>
+  <h1>Virtual Pet Simulator</h1>
 
   <!-- Pet Setup -->
   <section id="setup">
@@ -26,62 +26,69 @@
     <button onclick="createPet()">Create Pet</button>
   </section>
 
-  <!-- Pet Display -->
-  <section id="petArea" class="hidden">
-    <h2 id="petName"></h2>
-    <p id="petMood">Mood: 🙂</p>
+  <!-- MAIN LAYOUT (FIXED) -->
+  <div id="petLayout">
 
-    <!-- Stats -->
-    <div id="stats">
-      <p>Hunger: <span id="hunger"></span></p>
-      <p>Happiness: <span id="happiness"></span></p>
-      <p>Energy: <span id="energy"></span></p>
-      <p>Health: <span id="health"></span></p>
-      <p>Hygiene: <span id="hygiene"></span></p>
-      <p>Money: $<span id="money"></span></p>
-      <p>Total Spent: $<span id="spent"></span></p>
-      <button onclick="startTrivia()">Earn Money 💰</button>
-      <div id="petContainer">
-     <img id="petImage" src="" alt="Your Pet">
+    <!-- Pet Display -->
+    <section id="petArea" class="hidden">
+      <h2 id="petName"></h2>
+      <p id="petMood">Mood: 🙂</p>
+
+      <div id="stats">
+        <p>Hunger: <span id="hunger"></span></p>
+        <p>Happiness: <span id="happiness"></span></p>
+        <p>Energy: <span id="energy"></span></p>
+        <p>Health: <span id="health"></span></p>
+        <p>Hygiene: <span id="hygiene"></span></p>
+        <p>Money: $<span id="money"></span></p>
+        <p>Total Spent: $<span id="spent"></span></p>
+
+        <button onclick="startTrivia()">Earn Money</button>
+
+        <div id="petContainer">
+          <img id="petImage" src="" alt="Your Pet">
+        </div>
+
+        <!-- Actions -->
+        <div id="actions">
+          <button onclick="feedPet()">Feed</button>
+          <button onclick="playPet()">Play</button>
+          <button onclick="cleanPet()">Clean</button>
+          <button onclick="vetVisit()">Vet</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expense Box (NOW ON RIGHT) -->
+    <div id="expenseBox">
+      <h3>Cost of Care</h3>
+      <p>Food & Supplies: $<span id="foodCost">0</span></p>
+      <p>Vet Visits: $<span id="vetCost">0</span></p>
+      <p>Toys & Activities: $<span id="toyCost">0</span></p>
+      <hr>
+      <p><strong>Total Spent:</strong> $<span id="totalSpentDisplay">0</span></p>
+      <p><strong>Budget Left:</strong> $<span id="budgetDisplay">0</span></p>
     </div>
 
-    <!-- Actions -->
-    <div id="actions">
-      <button onclick="feedPet()">Feed</button>
-      <button onclick="playPet()">Play</button>
-      <button onclick="restPet()">Rest</button>
-      <button onclick="cleanPet()">Clean</button>
-      <button onclick="vetVisit()">Vet</button>
-    </div>
-  </section>
+  </div>
+
+  <!-- Trivia + Popup -->
+  <div id="triviaBox"></div>
+  <div id="popup" class="hidden"></div>
+
+  <!-- Instructions -->
+  <div id="instructionBox">
+    <h3>How to Play</h3>
+    <ul>
+      <li><strong>Choose your pet:</strong> Pick what type of pet you want and their name.</li>
+      <li><strong>Actions:</strong> Click the buttons to interact with your pet.</li>
+      <li><strong>Earn Money:</strong> Answer trivia correctly to gain $10.</li>
+      <li><strong>Expenses:</strong> Keep track of what you have spent and your budget.</li>
+    </ul>
+    <p><em>Tip: Keep an eye on your budget and your pet's mood.</em></p>
+  </div>
 
   <script src="script.js"></script>
+
 </body>
 </html>
-
-
-
-<div id="triviaBox"></div>
-<div id="popup" class="hidden"></div>
-
-<div id="instructionBox">
-  <h3>How to Play 🐾</h3>
-  <ul>
-    <li><strong>Choose your pet:</strong> Pick what type of pet you want and their name<strong></strong>.</li>
-    <li><strong>Actions:</strong> Click the buttons to interact with your pet<strong></strong>.</li>
-    <li><strong>Earn Money:</strong> Answer trivia correctly to gain <strong>$10</strong>!</li>
-    <li><strong>Expenses:</strong> Keep track of what you have spent and your budget <strong></strong>.</li>
-    
-  </ul>
-  <p><em>Tip: Keep an eye on your budget and your pet's mood!</em></p>
-</div>
-
-<div id="expenseBox">
-  <h3>Cost of Care</h3>
-  <p>Food & Supplies: $<span id="foodCost">0</span></p>
-  <p>Vet Visits: $<span id="vetCost">0</span></p>
-  <p>Toys & Activities: $<span id="toyCost">0</span></p>
-  <hr>
-  <p><strong>Total Spent:</strong> $<span id="totalSpentDisplay">0</span></p>
-  <p><strong>Budget Left:</strong> $<span id="budgetDisplay">0</span></p>
-</div>
